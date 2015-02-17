@@ -11,7 +11,7 @@ catkin_package(
 
 include_directories(include)
 
-set(CMAKE_CXX_FLAGS_RELEASE "-std=c++11 -O3 ${OTHERS_DEFINE}")
+set(CMAKE_CXX_FLAGS "-std=c++11 -O3 ${OTHERS_DEFINE}")
 
 add_executable(rosbag_controller_node 
 							 src/rosbag_controller_node.cpp
