@@ -14,6 +14,7 @@
 #include "spawner.h"
 
 #include <sys/stat.h>
+#include <errno.h>
 
 Spawner::Spawner(const char* const argv[], bool with_path,
     const char* const envp[]) :
@@ -43,6 +44,7 @@ Spawner::Spawner(const char* const argv[], bool with_path,
     if (result == -1) {
       // Note: no point writing to stdout here, it has been redirected
       std::cerr << "Error: Failed to launch program" << std::endl;
+      std::cerr << "errno: " << errno << std::endl;
       exit(1);
     }
   } else {
