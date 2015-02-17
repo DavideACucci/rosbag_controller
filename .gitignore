@@ -26,3 +26,12 @@
 *.exe
 *.out
 *.app
+
+# Eclipse metadata
+.directory
+.cproject
+.project
+.pydevproject
+.csettings
+.settings/
+.metadata/

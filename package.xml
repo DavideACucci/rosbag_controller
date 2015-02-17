@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>rosbag_controller</name>
+  <version>1.0.0</version>
+  <description>The rosbag_controller package</description>
+
+  <maintainer email="davide.cucci@epfl.ch">davide</maintainer>
+
+  <license>GPLv3</license>
+
+  <author email="davide.cucci@epfl.ch">Davide A. Cucci</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>roscpp</build_depend> 
+</package>

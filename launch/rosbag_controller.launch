@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<arg name="rosbag_bin" default="/opt/ros/indigo/bin/rosbag"/>
+	<arg name="bag"/>
+	
+	<node name="BAG" pkg="rosbag_controller" type="rosbag_controller_node" args="$(arg rosbag_bin) $(arg bag)" output="screen"/>
+
+</launch>
