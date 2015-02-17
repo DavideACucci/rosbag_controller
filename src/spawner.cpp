@@ -13,6 +13,8 @@
 
 #include "spawner.h"
 
+#include <sys/stat.h>
+
 Spawner::Spawner(const char* const argv[], bool with_path,
     const char* const envp[]) :
     stdin(NULL), stdout(NULL) {
@@ -65,4 +67,14 @@ int Spawner::wait() {
   int status;
   waitpid(child_pid, &status, 0);
   return status;
+}
+
+bool Spawner::is_alive() {
+  int status;
+  pid_t result = waitpid(child_pid, &status, WNOHANG);
+  if (result == 0) {
+    return true;
+  } else {
+    return false;
+  }
 }

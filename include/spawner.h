@@ -69,7 +69,7 @@ public:
 
   void send_eof();
   int wait();
-
+  bool is_alive();
 };
 
 #endif

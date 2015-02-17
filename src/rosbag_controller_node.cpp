@@ -24,6 +24,8 @@ bool pause(roscpp::Empty::Request &req, roscpp::Empty::Response &answ) {
 
     _is_bag_paused = true;
   }
+
+  ROS_INFO("bag paused");
 }
 
 bool unpause(roscpp::Empty::Request &req, roscpp::Empty::Response &answ) {
@@ -33,13 +35,15 @@ bool unpause(roscpp::Empty::Request &req, roscpp::Empty::Response &answ) {
 
     _is_bag_paused = false;
   }
+
+  ROS_INFO("playback resumed");
 }
 
 int main(int argc, char * argv[]) {
 
   ros::init(argc, argv, "rosbag_controller_node");
 
-  ros::NodeHandle n("~");
+  ros::NodeHandle n;
 
   // --- construct the argument vector and spawn rosbag
 
@@ -52,6 +56,18 @@ int main(int argc, char * argv[]) {
   rosbag_args[4] = argv[2];
 
   rosbag = new Spawner(rosbag_args);
+
+  // wait 1 sec and see if the process is alive before advertising services
+
+  sleep(1.0);
+
+  if (!rosbag->is_alive()) {
+    ROS_FATAL("rosbag has died for some reason");
+
+    return 1;
+  }
+
+  ROS_INFO("advertising services... ");
 
   // --- advertise pause and unpause services
 
